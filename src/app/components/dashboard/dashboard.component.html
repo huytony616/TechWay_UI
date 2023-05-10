@@ -1,0 +1,28 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <app-menu></app-menu>
+    <div class="container-fluid">
+        <div class="row d-flex flex-column">
+            <div class="col">
+                <div class="card shadow mt-4 border-left-info">
+                    <div class="row d-flex flex-column align-items-center">
+                        <div class="col">
+                            <highcharts-chart [Highcharts]="HighchartsArea" [options]="chartAreaOptions"
+                                style="width: 100%; height: 100%; display: block;"></highcharts-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow mt-4 border-left-info">
+                    <div class="row d-flex flex-column align-items-center">
+                        <div class="col">
+                            <highcharts-chart [Highcharts]="HighchartsCol" [options]="chartColOptions"
+                                style="width: 100%; height: 100%; display: block;"></highcharts-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

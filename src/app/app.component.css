@@ -1,0 +1,18 @@
+::ng-deep .sc-snackbar{
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-container-color: #1cc88a;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    white-space: pre-wrap;
+ }
+ ::ng-deep .wn-snackbar{
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-container-color: #f6c23e;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    white-space: pre-wrap;
+ }
+ ::ng-deep .dg-snackbar{
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-container-color: #e74a3b;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    white-space: pre-wrap;
+ }
