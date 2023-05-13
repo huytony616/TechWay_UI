@@ -8,4 +8,8 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
   constructor(private router: Router){}
+  logout() {
+    localStorage.removeItem('jwtToken');
+    window.location.reload();
+  }
 }

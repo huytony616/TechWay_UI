@@ -8,7 +8,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from "@angular/material/grid-list";
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -32,6 +32,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { EditProdDialogComponent } from './components/dialog/edit-prod-dialog/edit-prod-dialog.component';
 import { ChartModule } from 'angular-highcharts';
 import { HighchartsChartModule } from "highcharts-angular";
+import { SigninComponent } from './components/signin/signin.component';
+import {MatCardModule} from '@angular/material/card';
+import { AuthInterceptor } from './_auth/auth.interceptor';
+import { AuthGuard } from './_auth/auth.guard';
+import { UserService } from './service/user.service';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +51,9 @@ import { HighchartsChartModule } from "highcharts-angular";
     UnavailDialogComponent,
     ImgDialogComponent,
     EditProdDialogComponent,
+    SigninComponent,
+    ForbiddenComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -69,9 +79,13 @@ import { HighchartsChartModule } from "highcharts-angular";
     MatAutocompleteModule,
     MatTabsModule,
     ChartModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    MatCardModule
   ],
-  providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}}],
+  providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000}},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
+    UserService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

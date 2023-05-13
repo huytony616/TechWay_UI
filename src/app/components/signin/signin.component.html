@@ -1,0 +1,32 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2 style="color: cornflowerblue;">Sign In</h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #signupForm="ngForm" (ngSubmit)="signin(signupForm)">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input required="" type="email" class="form-control" placeholder="Enter Email"
+                                [(ngModel)]="user.email" name="name">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input required="" type="password" class="form-control" placeholder="Enter Password"
+                                [(ngModel)]="user.password" name="name">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="row d-flex flex-column align-items-center m-2">
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
