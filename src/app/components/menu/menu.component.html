@@ -13,8 +13,8 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseP" aria-expanded="true"
             aria-controls="collapseP">
-            <img class="img-profile rounded-circle" src="https://www.w3schools.com/images/lamp.jpg">
-            <span class="ml-2 mr-2 d-none d-lg-inline text-white-600 small">Douglas McGee</span>
+            <img class="img-profile rounded-circle" src="{{img}}">
+            <span class="ml-2 mr-2 d-none d-lg-inline text-white-600 small">{{authSVC.decodedToken.fullname}}</span>
         </a>
         <div id="collapseP" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -56,21 +56,6 @@
                 <a class="collapse-item bg-success" routerLink="/newprod">Add New</a>
             </div>
         </div>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 
 </ul>
