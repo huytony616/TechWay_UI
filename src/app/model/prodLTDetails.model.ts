@@ -7,14 +7,14 @@ export interface ProductDetail {
   cpuMaxSpeed: number;
   cache: number;
   ram: number;
-  typeRAM: string;
+  type: string;
   busRAM: number;
   maxRAM: number;
   ssd: string;
-  screenSize: number;
-  displayResolution: string;
+  screenWidth: number;
+  screenResolution: string;
   hz: number;
-  displayTechnologies: number[];
-  graphicsCard: string;
+  screenTechs: number[];
+  screenCard: string;
   sound: string;
 }

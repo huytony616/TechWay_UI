@@ -67,32 +67,32 @@ export class EditProdDialogComponent implements OnInit {
     cpuMaxSpeed: 0,
     cache: 0,
     ram: 0,
-    typeRAM: '',
+    type: '',
     busRAM: 0,
     maxRAM: 0,
     ssd: '',
-    screenSize: 0,
-    displayResolution: '',
+    screenWidth: 0,
+    screenResolution: '',
     hz: 0,
-    displayTechnologies: [],
-    graphicsCard: '',
+    screenTechs: [],
+    screenCard: '',
     sound: '',
   };
 
   prodDetailE: ProductElseDetail = {
     id: 0,
-    displayTechnology: 0,
-    displayResolution: '',
-    screenSize: 0,
+    screenTech: 0,
+    screenResolution: '',
+    screenWidth: 0,
     maxLight: '',
     glass: '',
-    mainCameraResolution: '',
-    selfieCameraResolution: '',
+    backCameraResolution: '',
+    frontCameraResolution: '',
     flash: 0,
-    mainCameraFeatures: [],
-    selfieCameraFeatures: [],
+    backCameraFeatures: [],
+    frontCameraFeatures: [],
     os: '',
-    chipset: '',
+    cpu: '',
     cpuSpeed: '',
     gpu: '',
     ram: 0,
@@ -104,8 +104,8 @@ export class EditProdDialogComponent implements OnInit {
     bluetooth: '',
     port: '',
     jackPhone: '',
-    batteryCapacity: 0,
-    batteryType: '',
+    pinCapacity: 0,
+    pinType: '',
     maxChargingSupport: 0,
     advancedSecurities: [],
     specialFeatures: [],
@@ -202,18 +202,18 @@ export class EditProdDialogComponent implements OnInit {
         this.prodDetail.id = res.id;
         this.prodDetail.maxRAM = res.maxRAM;
         this.prodDetail.ram = res.ram;
-        this.prodDetail.graphicsCard = res.graphicsCard;
-        this.prodDetail.displayResolution = res.displayResolution;
+        this.prodDetail.screenCard = res.screenCard;
+        this.prodDetail.screenResolution = res.screenResolution;
 
-        res.displayTechnologies.forEach((scrTech: any) => {
-          this.prodDetail.displayTechnologies.push(scrTech.id);
+        res.screenTechs.forEach((scrTech: any) => {
+          this.prodDetail.screenTechs.push(scrTech.id);
         });
 
-        this.prodDetail.screenSize = res.screenSize;
+        this.prodDetail.screenWidth = res.screenWidth;
         this.prodDetail.sound = res.sound;
         this.prodDetail.ssd = res.ssd;
         this.prodDetail.thread = res.thread;
-        this.prodDetail.typeRAM = res.typeRAM;
+        this.prodDetail.type = res.type;
       },
       error: (err) => {
         this.snack.open(
@@ -254,20 +254,20 @@ export class EditProdDialogComponent implements OnInit {
           this.prodDetailE.advancedSecurities.push(obj.id);
         });
         res.advancedSecurities.forEach((obj: any) => {
-          this.prodDetailE.mainCameraFeatures.push(obj.id);
+          this.prodDetailE.backCameraFeatures.push(obj.id);
         });
-        this.prodDetailE.mainCameraResolution = res.mainCameraResolution;
+        this.prodDetailE.backCameraResolution = res.backCameraResolution;
         this.prodDetailE.bluetooth = res.bluetooth;
         this.prodDetailE.contacts = res.contacts;
-        this.prodDetailE.chipset = res.chipset;
+        this.prodDetailE.cpu = res.cpu;
         this.prodDetailE.cpuSpeed = res.cpuSpeed;
         this.prodDetailE.design = res.design;
         this.prodDetailE.dimensionAndWeight = res.dimensionAndWeight;
         this.prodDetailE.flash = res.flash;
         res.advancedSecurities.forEach((obj: any) => {
-          this.prodDetailE.selfieCameraFeatures.push(obj.id);
+          this.prodDetailE.frontCameraFeatures.push(obj.id);
         });
-        this.prodDetailE.selfieCameraResolution = res.selfieCameraResolution;
+        this.prodDetailE.frontCameraResolution = res.frontCameraResolution;
         this.prodDetailE.glass = res.glass;
         this.prodDetailE.gpu = res.gpu;
         this.prodDetailE.id = res.id;
@@ -277,15 +277,15 @@ export class EditProdDialogComponent implements OnInit {
         this.prodDetailE.maxLight = res.maxLight;
         this.prodDetailE.mobileNetwork = res.mobileNetwork;
         this.prodDetailE.os = res.os;
-        this.prodDetailE.batteryCapacity = res.batteryCapacity;
-        this.prodDetailE.batteryType = res.batteryType;
+        this.prodDetailE.pinCapacity = res.pinCapacity;
+        this.prodDetailE.pinType = res.pinType;
         this.prodDetailE.port = res.port;
         this.prodDetailE.ram = res.ram;
         this.prodDetailE.rom = res.rom;
         this.prodDetailE.romUseable = res.romUseable;
-        this.prodDetailE.displayResolution = res.displayResolution;
-        this.prodDetailE.displayTechnology = res.displayTechnology.id;
-        this.prodDetailE.screenSize = res.screenSize;
+        this.prodDetailE.screenResolution = res.screenResolution;
+        this.prodDetailE.screenTech = res.screenTech.id;
+        this.prodDetailE.screenWidth = res.screenWidth;
         this.prodDetailE.sim = res.sim;
         res.advancedSecurities.forEach((obj: any) => {
           this.prodDetailE.specialFeatures.push(obj.id);

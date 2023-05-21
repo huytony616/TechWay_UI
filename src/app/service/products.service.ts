@@ -84,13 +84,13 @@ export class ProductsService {
   }
 
   getProdDetail(id: any) {
-    return this.http.get<any>(
+    return this.http.get<fullProduct>(
       'http://localhost:8080/api/v1/laptopdetails/' + id
     );
   }
   
   getProdEDetail(id: any) {
-    return this.http.get<any>(
+    return this.http.get<fullProductE>(
       'http://localhost:8080/api/v1/phone-details/' + id
     );
   }

@@ -81,31 +81,31 @@ export class ProductsComponent implements OnInit {
     cpuMaxSpeed: 0,
     cache: 0,
     ram: 0,
-    typeRAM: '',
+    type: '',
     busRAM: 0,
     maxRAM: 0,
     ssd: '',
-    screenSize: 0,
-    displayResolution: '',
+    screenWidth: 0,
+    screenResolution: '',
     hz: 0,
-    displayTechnologies: [],
-    graphicsCard: '',
+    screenTechs: [],
+    screenCard: '',
     sound: '',
   };
   ProdEDetail: ProductElseDetail = {
     id: 0,
-    displayTechnology: 0,
-    displayResolution: '',
-    screenSize: 0,
+    screenTech: 0,
+    screenResolution: '',
+    screenWidth: 0,
     maxLight: '',
     glass: '',
-    mainCameraResolution: '',
-    selfieCameraResolution: '',
+    backCameraResolution: '',
+    frontCameraResolution: '',
     flash: 0,
-    mainCameraFeatures: [],
-    selfieCameraFeatures: [],
+    backCameraFeatures: [],
+    frontCameraFeatures: [],
     os: '',
-    chipset: '',
+    cpu: '',
     cpuSpeed: '',
     gpu: '',
     ram: 0,
@@ -117,8 +117,8 @@ export class ProductsComponent implements OnInit {
     bluetooth: '',
     port: '',
     jackPhone: '',
-    batteryCapacity: 0,
-    batteryType: '',
+    pinCapacity: 0,
+    pinType: '',
     maxChargingSupport: 0,
     advancedSecurities: [],
     specialFeatures: [],
@@ -186,8 +186,8 @@ export class ProductsComponent implements OnInit {
     console.log(this.Duplicate);
   }
   chooseSrcTech(e: any) {
-    this.ProdEDetail.displayTechnology = this.selectedSrcTech
-    console.log(this.ProdEDetail.displayTechnology);
+    this.ProdEDetail.screenTech = this.selectedSrcTech
+    console.log(this.ProdEDetail.screenTech);
   }
 
   async onInput(e: Event) {

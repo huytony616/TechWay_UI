@@ -180,7 +180,7 @@
                                             <div class="form-group">
                                                 <label>RAM Type: </label>
                                                 <input required="" type="text" class="form-control"
-                                                    placeholder="Enter name" [(ngModel)]="prodDetail.typeRAM" name="type">
+                                                    placeholder="Enter name" [(ngModel)]="prodDetail.type" name="type">
                                             </div>
 
                                             <div class="form-group">
@@ -204,14 +204,14 @@
                                             <div class="form-group">
                                                 <label>Screen Size: </label>
                                                 <input type="number" class="form-control" placeholder="Enter value"
-                                                    [(ngModel)]="prodDetail.screenSize" name="screenSize">
+                                                    [(ngModel)]="prodDetail.screenWidth" name="screenWidth">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Screen Resolution: </label>
                                                 <input required="" type="text" class="form-control"
-                                                    placeholder="Enter Resolution" [(ngModel)]="prodDetail.displayResolution"
-                                                    name="displayResolution">
+                                                    placeholder="Enter Resolution" [(ngModel)]="prodDetail.screenResolution"
+                                                    name="screenResolution">
                                             </div>
 
                                             <div class="form-group">
@@ -225,7 +225,7 @@
                                                     <div class="form-group">
                                                         <mat-form-field appearance="fill" class="d-flex">
                                                             <mat-label>Screen Technologys:</mat-label>
-                                                            <mat-select [(ngModel)]="prodDetail.displayTechnologies"
+                                                            <mat-select [(ngModel)]="prodDetail.screenTechs"
                                                                 [ngModelOptions]="{standalone: true}" multiple>
                                                                 <mat-option *ngFor="let scrTech of scrTechLst"
                                                                     [value]="scrTech.id">{{scrTech.name}}</mat-option>
@@ -238,8 +238,8 @@
                                             <div class="form-group">
                                                 <label>VGA: </label>
                                                 <input required="" type="text" class="form-control"
-                                                    placeholder="Enter name" [(ngModel)]="prodDetail.graphicsCard"
-                                                    name="graphicsCard">
+                                                    placeholder="Enter name" [(ngModel)]="prodDetail.screenCard"
+                                                    name="screenCard">
                                             </div>
 
                                             <div class="form-group">
@@ -274,7 +274,7 @@
                                             <div class="form-group">
                                                 <mat-form-field appearance="fill" class="d-flex">
                                                     <mat-label>Screen Technologys:</mat-label>
-                                                    <mat-select [(ngModel)]="prodDetailE.displayTechnology"
+                                                    <mat-select [(ngModel)]="prodDetailE.screenTech"
                                                         [ngModelOptions]="{standalone: true}">
                                                         <mat-option *ngFor="let scrTech of scrTechLst"
                                                             [value]="scrTech.id">{{scrTech.name}}</mat-option>
@@ -286,13 +286,13 @@
                                                 <label>Screen Resolution: </label>
                                                 <input required="" type="text" class="form-control"
                                                     placeholder="Enter Resolution"
-                                                    [(ngModel)]="prodDetailE.displayResolution" name="displayResolution">
+                                                    [(ngModel)]="prodDetailE.screenResolution" name="screenResolution">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Screen Size: </label>
                                                 <input type="number" class="form-control" placeholder="Enter price"
-                                                    [(ngModel)]="prodDetailE.screenSize" name="screenSize">
+                                                    [(ngModel)]="prodDetailE.screenWidth" name="screenWidth">
                                             </div>
 
                                             <div class="form-group">
@@ -313,16 +313,16 @@
                                                 <label>Main Camera Resolution: </label>
                                                 <input required="" type="text" class="form-control"
                                                     placeholder="Enter name"
-                                                    [(ngModel)]="prodDetailE.mainCameraResolution"
-                                                    name="mainCameraResolution">
+                                                    [(ngModel)]="prodDetailE.backCameraResolution"
+                                                    name="backCameraResolution">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Front Camera Resolution: </label>
                                                 <input required="" type="text" class="form-control"
                                                     placeholder="Enter name"
-                                                    [(ngModel)]="prodDetailE.selfieCameraResolution"
-                                                    name="selfieCameraResolution">
+                                                    [(ngModel)]="prodDetailE.frontCameraResolution"
+                                                    name="frontCameraResolution">
                                             </div>
 
                                             <div class="form-group">
@@ -336,7 +336,7 @@
                                                     <div class="form-group">
                                                         <mat-form-field appearance="fill" class="d-flex">
                                                             <mat-label>Main Camera Features:</mat-label>
-                                                            <mat-select [(ngModel)]="prodDetailE.mainCameraFeatures"
+                                                            <mat-select [(ngModel)]="prodDetailE.backCameraFeatures"
                                                                 [ngModelOptions]="{standalone: true}" multiple>
                                                                 <mat-option *ngFor="let scrTech of mainCamLst"
                                                                     [value]="scrTech.id">{{scrTech.name}}</mat-option>
@@ -352,7 +352,7 @@
                                                         <mat-form-field appearance="fill" class="d-flex">
                                                             <mat-label>Front Camera Features:</mat-label>
                                                             <mat-select
-                                                                [(ngModel)]="prodDetailE.selfieCameraFeatures"
+                                                                [(ngModel)]="prodDetailE.frontCameraFeatures"
                                                                 [ngModelOptions]="{standalone: true}" multiple>
                                                                 <mat-option *ngFor="let scrTech of frontCamLst"
                                                                     [value]="scrTech.id">{{scrTech.name}}</mat-option>
@@ -372,8 +372,8 @@
                                             <div class="form-group">
                                                 <label>CPU Name: </label>
                                                 <input required="" type="text" class="form-control"
-                                                    placeholder="Enter name" [(ngModel)]="prodDetailE.chipset"
-                                                    name="chipset">
+                                                    placeholder="Enter name" [(ngModel)]="prodDetailE.cpu"
+                                                    name="cpu">
                                             </div>
 
                                             <div class="form-group">
@@ -453,14 +453,14 @@
                                             <div class="form-group">
                                                 <label>Battery Capacity: </label>
                                                 <input type="number" class="form-control" placeholder="Enter price"
-                                                    [(ngModel)]="prodDetailE.batteryCapacity" name="batteryCapacity">
+                                                    [(ngModel)]="prodDetailE.pinCapacity" name="pinCapacity">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Battery Type:: </label>
                                                 <input required="" type="text" class="form-control"
-                                                    placeholder="Enter name" [(ngModel)]="prodDetailE.batteryType"
-                                                    name="batteryType">
+                                                    placeholder="Enter name" [(ngModel)]="prodDetailE.pinType"
+                                                    name="pinType">
                                             </div>
 
                                             <div class="form-group">
