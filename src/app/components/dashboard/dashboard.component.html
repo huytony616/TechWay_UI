@@ -1,5 +1,5 @@
 <!-- Page Wrapper -->
-<div id="wrapper">
+<div id="wrapper" *ngIf="filtersLoaded | async">
     <app-menu></app-menu>
     <div class="container-fluid">
         <div class="row d-flex flex-column">

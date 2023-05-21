@@ -94,4 +94,18 @@ export class ProductsService {
       'http://localhost:8080/api/v1/phone-details/' + id
     );
   }
+  
+  getReportRevenue() {
+    return this.http.get<any>(
+      'http://localhost:8080/api/v1/report/monthly-sales'
+    );
+  }
+  
+  getReportCatMonthRevenue() {
+    return this.http.get<any>(
+      'http://localhost:8080/api/v1/report/total-by-category-month'
+    );
+  }
+
+
 }

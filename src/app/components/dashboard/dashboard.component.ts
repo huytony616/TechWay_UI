@@ -1,6 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { ProductsService } from 'src/app/service/products.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +11,165 @@ import HC_exporting from 'highcharts/modules/exporting';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  filtersLoaded: Promise<boolean> = Promise.resolve(false);
   chartAreaOptions!: {};
-  chartColOptions!:{};
-  // @Input() data: any = [];
+  chartColOptions!: {};
 
   HighchartsArea = Highcharts;
   HighchartsCol = Highcharts;
-  constructor() {}
+  constructor(
+    public prodService: ProductsService,
+    private snack: MatSnackBar
+  ) {}
+
+  revaenueByMonth = new Array(12).fill(0);
+  revPhone = new Array(12).fill(0);
+  revLaptop = new Array(12).fill(0);
+  revTablet = new Array(12).fill(0);
 
   ngOnInit() {
+    this.chartData();
+    this.chartInit();
+  }
+
+  chartData() {
+    this.revaenueByMonth.forEach((e) => {
+      e = 0;
+    });
+
+    this.prodService.getReportRevenue().subscribe(
+      (res) => {
+        res.forEach((rev: any) => {
+          switch (rev.month) {
+            case 1:
+              this.revaenueByMonth[0] = rev.total;
+              break;
+            case 2:
+              this.revaenueByMonth[1] = rev.total;
+              break;
+            case 3:
+              this.revaenueByMonth[2] = rev.total;
+              break;
+            case 4:
+              this.revaenueByMonth[3] = rev.total;
+              break;
+            case 5:
+              this.revaenueByMonth[4] = rev.total;
+              break;
+            case 6:
+              this.revaenueByMonth[5] = rev.total;
+              break;
+            case 7:
+              this.revaenueByMonth[6] = rev.total;
+              break;
+            case 8:
+              this.revaenueByMonth[7] = rev.total;
+              break;
+            case 9:
+              this.revaenueByMonth[8] = rev.total;
+              break;
+            case 10:
+              this.revaenueByMonth[9] = rev.total;
+              break;
+            case 11:
+              this.revaenueByMonth[10] = rev.total;
+              break;
+            case 12:
+              this.revaenueByMonth[11] = rev.total;
+              break;
+            default:
+              break;
+          }
+        });
+
+        this.prodService.getReportCatMonthRevenue().subscribe(
+          (res: any) => {
+            res.forEach((rev:any) => {
+              switch (rev.month) {
+                case 1:
+                  this.setRevByCat(0, rev.category_id, rev.total);
+                  break;
+                case 2:
+                  this.setRevByCat(1, rev.category_id, rev.total);
+                  break;
+                case 3:
+                  this.setRevByCat(2, rev.category_id, rev.total);
+                  break;
+                case 4:
+                  this.setRevByCat(3, rev.category_id, rev.total);
+                  break;
+                case 5:
+                  this.setRevByCat(4, rev.category_id, rev.total);
+                  break;
+                case 6:
+                  this.setRevByCat(5, rev.category_id, rev.total);
+                  break;
+                case 7:
+                  this.setRevByCat(6, rev.category_id, rev.total);
+                  break;
+                case 8:
+                  this.setRevByCat(7, rev.category_id, rev.total);
+                  break;
+                case 9:
+                  this.setRevByCat(8, rev.category_id, rev.total);
+                  break;
+                case 10:
+                  this.setRevByCat(9, rev.category_id, rev.total);
+                  break;
+                case 11:
+                  this.setRevByCat(10, rev.category_id, rev.total);
+                  break;
+                case 12:
+                  this.setRevByCat(11, rev.category_id, rev.total);
+                  break;
+                default:
+                  break;
+              }
+              this.filtersLoaded = Promise.resolve(true);
+            });
+          },
+          (err: HttpErrorResponse) => {
+            this.snack.open(
+              'Fail With Error: ' + err.name + '\n Message: ' + err.message,
+              'OK',
+              {
+                panelClass: ['dg-snackbar'],
+                verticalPosition: 'top',
+              }
+            );
+          }
+        );
+      },
+      (err: HttpErrorResponse) => {
+        this.snack.open(
+          'Fail With Error: ' + err.name + '\n Message: ' + err.message,
+          'OK',
+          {
+            panelClass: ['dg-snackbar'],
+            verticalPosition: 'top',
+          }
+        );
+      }
+    );
+  }
+
+  setRevByCat(index: number, catid: any, rev: any) {
+    if (catid == 1) {
+      console.log(catid);
+      
+      this.revPhone[index] = rev;
+    }
+    if (catid == 2) {
+      console.log(catid);
+      this.revLaptop[index] = rev;
+    }
+    if (catid == 3) {
+      console.log(catid);
+      this.revTablet[index] = rev;
+    }
+  }
+
+  chartInit() {
     this.chartAreaOptions = {
       chart: {
         type: 'area',
@@ -44,7 +197,7 @@ export class DashboardComponent implements OnInit {
       yAxis: {
         min: 0,
         title: {
-          text: 'Profit (Million VNĐ)',
+          text: 'Revenue',
         },
       },
       tooltip: {
@@ -59,26 +212,18 @@ export class DashboardComponent implements OnInit {
       },
       series: [
         {
-          name: 'Phone',
-          data: [2, 9, 13, 50, 170, 299, 438, 841, 1169, 1703, 2422, 3692],
-        },
-        {
-          name: 'Tablet',
-          data: [1, 5, 25, 50, 120, 150, 200, 426, 660, 863, 1048, 1627],
-        },
-        {
-          name: 'Laptop',
-          data: [0, 7, 15, 30, 100, 120, 150, 550, 700, 900, 1200, 2000],
+          name: 'Revenue',
+          data: this.revaenueByMonth,
         },
       ],
     };
 
     this.chartColOptions = {
       chart: {
-        type: 'column'
+        type: 'column',
       },
       title: {
-        text: 'Monthly Average Rainfall'
+        text: 'Monthly Revenue by Category',
       },
       xAxis: {
         categories: [
@@ -93,51 +238,45 @@ export class DashboardComponent implements OnInit {
           'Sep',
           'Oct',
           'Nov',
-          'Dec'
+          'Dec',
         ],
-        crosshair: true
+        crosshair: true,
       },
       yAxis: {
         min: 0,
         title: {
-          text: 'Rainfall (mm)'
-        }
+          text: 'Revenue',
+        },
       },
       tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-          '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+        pointFormat:
+          '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+          '<td style="padding:0"><b>{point.y:.1f} VNĐ</b></td></tr>',
         footerFormat: '</table>',
         shared: true,
-        useHTML: true
+        useHTML: true,
       },
       plotOptions: {
         column: {
           pointPadding: 0.2,
-          borderWidth: 0
-        }
+          borderWidth: 0,
+        },
       },
-      series: [{
-        name: 'Tokyo',
-        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
-          194.1, 95.6, 54.4]
-    
-      }, {
-        name: 'New York',
-        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5,
-          106.6, 92.3]
-    
-      }, {
-        name: 'London',
-        data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3,
-          51.2]
-    
-      }, {
-        name: 'Berlin',
-        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8,
-          51.1]
-    
-      }]
+      series: [
+        {
+          name: 'Phone',
+          data: this.revPhone,
+        },
+        {
+          name: 'Laptop',
+          data: this.revLaptop,
+        },
+        {
+          name: 'Tablet',
+          data: this.revTablet,
+        },
+      ],
     };
 
     HC_exporting(Highcharts);
