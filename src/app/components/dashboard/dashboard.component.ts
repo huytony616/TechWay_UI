@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
                 default:
                   break;
               }
-              this.filtersLoaded = Promise.resolve(true);
+              
             });
           },
           (err: HttpErrorResponse) => {
@@ -151,6 +151,7 @@ export class DashboardComponent implements OnInit {
         );
       }
     );
+    this.filtersLoaded = Promise.resolve(true);
   }
 
   setRevByCat(index: number, catid: any, rev: any) {

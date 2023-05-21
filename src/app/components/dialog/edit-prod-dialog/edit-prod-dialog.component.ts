@@ -202,18 +202,18 @@ export class EditProdDialogComponent implements OnInit {
         this.prodDetail.id = res.id;
         this.prodDetail.maxRAM = res.maxRAM;
         this.prodDetail.ram = res.ram;
-        this.prodDetail.screenCard = res.screenCard;
-        this.prodDetail.screenResolution = res.screenResolution;
+        this.prodDetail.screenCard = res.graphicsCard;
+        this.prodDetail.screenResolution = res.displayResolution;
 
-        res.screenTechs.forEach((scrTech: any) => {
+        res.displayTechnologies.forEach((scrTech: any) => {
           this.prodDetail.screenTechs.push(scrTech.id);
         });
 
-        this.prodDetail.screenWidth = res.screenWidth;
+        this.prodDetail.screenWidth = res.screenSize;
         this.prodDetail.sound = res.sound;
         this.prodDetail.ssd = res.ssd;
         this.prodDetail.thread = res.thread;
-        this.prodDetail.type = res.type;
+        this.prodDetail.type = res.typeRAM;
       },
       error: (err) => {
         this.snack.open(
@@ -253,21 +253,21 @@ export class EditProdDialogComponent implements OnInit {
         res.advancedSecurities.forEach((obj: any) => {
           this.prodDetailE.advancedSecurities.push(obj.id);
         });
-        res.advancedSecurities.forEach((obj: any) => {
+        res.mainCameraFeatures.forEach((obj: any) => {
           this.prodDetailE.backCameraFeatures.push(obj.id);
         });
-        this.prodDetailE.backCameraResolution = res.backCameraResolution;
+        this.prodDetailE.backCameraResolution = res.mainCameraResolution;
         this.prodDetailE.bluetooth = res.bluetooth;
         this.prodDetailE.contacts = res.contacts;
-        this.prodDetailE.cpu = res.cpu;
+        this.prodDetailE.cpu = res.chipset;
         this.prodDetailE.cpuSpeed = res.cpuSpeed;
         this.prodDetailE.design = res.design;
         this.prodDetailE.dimensionAndWeight = res.dimensionAndWeight;
         this.prodDetailE.flash = res.flash;
-        res.advancedSecurities.forEach((obj: any) => {
+        res.selfieCameraFeatures.forEach((obj: any) => {
           this.prodDetailE.frontCameraFeatures.push(obj.id);
         });
-        this.prodDetailE.frontCameraResolution = res.frontCameraResolution;
+        this.prodDetailE.frontCameraResolution = res.selfieCameraResolution;
         this.prodDetailE.glass = res.glass;
         this.prodDetailE.gpu = res.gpu;
         this.prodDetailE.id = res.id;
@@ -277,15 +277,15 @@ export class EditProdDialogComponent implements OnInit {
         this.prodDetailE.maxLight = res.maxLight;
         this.prodDetailE.mobileNetwork = res.mobileNetwork;
         this.prodDetailE.os = res.os;
-        this.prodDetailE.pinCapacity = res.pinCapacity;
-        this.prodDetailE.pinType = res.pinType;
+        this.prodDetailE.pinCapacity = res.batteryCapacity;
+        this.prodDetailE.pinType = res.batteryType;
         this.prodDetailE.port = res.port;
         this.prodDetailE.ram = res.ram;
         this.prodDetailE.rom = res.rom;
         this.prodDetailE.romUseable = res.romUseable;
-        this.prodDetailE.screenResolution = res.screenResolution;
-        this.prodDetailE.screenTech = res.screenTech.id;
-        this.prodDetailE.screenWidth = res.screenWidth;
+        this.prodDetailE.screenResolution = res.displayResolution;
+        this.prodDetailE.screenTech = res.displayTechnology.id;
+        this.prodDetailE.screenWidth = res.screenSize;
         this.prodDetailE.sim = res.sim;
         res.advancedSecurities.forEach((obj: any) => {
           this.prodDetailE.specialFeatures.push(obj.id);
